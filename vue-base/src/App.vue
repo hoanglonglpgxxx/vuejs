@@ -5,7 +5,6 @@ import logo from './assets/logo.svg';
 const imgUrl = logo;
 import { ref } from 'vue';
 
-// Define reactive data using ref or reactive
 const name = "mits";
 const url = "https://tailieusharefree.blogspot.com/2024/06/khoa-hoc-vue3-tu-co-ban-toi-nang-cao.html";
 
@@ -29,21 +28,24 @@ function renderTaiXiu() {
   if (counter > 11) {
     return `Tài ${counter}`;
   } else {
-    return 'Xỉu';
+    return `Xỉu ${counter}`;
   }
 }
+const count = ref(0);
+function increasement() {
+  count.value++;
+}
+const testHTML = `<div>Test apply html</div>`;
 
-const testHTML = `<div>Test apply html</div>`
+function handleSubmit(el = '', event) {
+  console.log(el, event);
+}
 
 </script>
 
 <template>
   <header>
     <img v-if="shouldShowImage" alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <div class="wrapper">
-      <h1>{{ name }}</h1>
-      <HelloWorld msg="You did it!" />
-    </div>
   </header>
 
   <section id="bind-attribute">
@@ -54,11 +56,11 @@ const testHTML = `<div>Test apply html</div>`
       Tài hay Xỉu: {{ renderTaiXiu() }}
     </div>
     <div v-html="testHTML"></div>
-  </section>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <form @submit.stop.prevent="handleSubmit(this, $event)" style="margin-top: 20px;">
+      <button type="submit">Submit form</button>
+    </form>
+  </section>
 </template>
 
 <style scoped>
