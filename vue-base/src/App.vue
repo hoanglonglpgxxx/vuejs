@@ -1,6 +1,4 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
 import logo from './assets/logo.svg';
 const imgUrl = logo;
 import { ref } from 'vue';
